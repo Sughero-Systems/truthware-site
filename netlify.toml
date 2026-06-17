@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+
+# No build command needed — this is a plain static site (no framework, no
+# bundler). Netlify just serves the files as they are.

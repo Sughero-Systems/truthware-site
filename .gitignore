@@ -1,0 +1,12 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+
+# Netlify local state
+.netlify/
+
+# In case Node tooling gets added later
+node_modules/

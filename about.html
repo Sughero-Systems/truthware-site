@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — Truthware</title>
+  <meta name="description" content="Why Truthware exists, where the materials come from, and how each piece is made." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="index.html">Truthware</a>
+      <ul class="nav-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding-bottom: var(--space-4);">
+    <div class="hero-inner">
+      <p class="eyebrow">Our Story</p>
+      <h1 style="font-size: clamp(2.25rem, 6vw, 4rem);">Grown Close to Home</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p>Truthware started with a simple frustration: most of what we wear travels further than we ever will, passing through hands and processes nobody can trace, before landing in a basket with a price tag and not much else.</p>
+        <p>We wanted something different — clothing made from materials grown and sourced close to home, finished by people we know, that says something true on the outside because it's true on the inside too.</p>
+        <p>No filler claims, no greenwashing. Just good materials, honest work, and sayings worth standing behind.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How It's Made</p>
+        <h2>From Field to Garment</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-step"><h3>Grown</h3><p>Fibre grown locally and sustainably, season by season.</p></div>
+        <div class="process-step"><h3>Spun</h3><p>Raw fibre spun into yarn close to where it's grown.</p></div>
+        <div class="process-step"><h3>Dyed</h3><p>Coloured in small batches, with care for what runs downstream.</p></div>
+        <div class="process-step"><h3>Sewn</h3><p>Cut and finished by hand, piece by piece.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="logo">Truthware</span>
+      <ul class="nav-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <span class="footer-note">&copy; <span id="year"></span> Truthware. Made close to home.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

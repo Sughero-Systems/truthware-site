@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Truthware</title>
+  <meta name="description" content="Locally and sustainably made clothing from Truthware." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="index.html">Truthware</a>
+      <ul class="nav-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding-bottom: var(--space-4);">
+    <div class="hero-inner">
+      <p class="eyebrow">Shop</p>
+      <h1 style="font-size: clamp(2.25rem, 6vw, 4rem);">The Collection</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!--
+        PLACEHOLDER PRODUCT GRID
+        Swap these six cards for real products once you have photography,
+        names, and prices. Each card is just a .product-card block —
+        copy/paste one and edit the contents.
+      -->
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-photo">Product Photo</div>
+          <span class="product-name">The Statement Tee</span>
+          <span class="tag">Organic Cotton</span>
+          <span class="product-price">$45</span>
+        </div>
+        <div class="product-card">
+          <div class="product-photo">Product Photo</div>
+          <span class="product-name">Heavyweight Hoodie</span>
+          <span class="tag">Recycled Fleece</span>
+          <span class="product-price">$95</span>
+        </div>
+        <div class="product-card">
+          <div class="product-photo">Product Photo</div>
+          <span class="product-name">Field Cap</span>
+          <span class="tag">Hemp Blend</span>
+          <span class="product-price">$35</span>
+        </div>
+        <div class="product-card">
+          <div class="product-photo">Product Photo</div>
+          <span class="product-name">Long Sleeve Tee</span>
+          <span class="tag">Organic Cotton</span>
+          <span class="product-price">$55</span>
+        </div>
+        <div class="product-card">
+          <div class="product-photo">Product Photo</div>
+          <span class="product-name">Canvas Tote</span>
+          <span class="tag">Locally Woven</span>
+          <span class="product-price">$28</span>
+        </div>
+        <div class="product-card">
+          <div class="product-photo">Product Photo</div>
+          <span class="product-name">Crew Socks</span>
+          <span class="tag">Merino Wool</span>
+          <span class="product-price">$18</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="logo">Truthware</span>
+      <ul class="nav-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <span class="footer-note">&copy; <span id="year"></span> Truthware. Made close to home.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
