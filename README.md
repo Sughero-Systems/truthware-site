@@ -1,79 +1,88 @@
-# Truthware — Website Scaffold
+# TruthWare — Website
 
-A plain HTML/CSS/JS starting point for the Truthware site. No build step, no
-framework — just open it in VS Code and go. This is intentionally a
-**structural** pass: pages, navigation, and a basic style system are in
-place, but the colours and fonts are placeholders, ready to be swapped once
-Catherine's team sends through their website examples and colour picks.
+A plain HTML/CSS/JS site, no build step, no framework. Rebuilt around
+Kathryn's "recognition apparel" direction: quiet, architectural, text-led,
+recognition before commerce.
 
 ## Folder structure
 
 ```
 truthware-site/
-├── index.html        Home page
-├── about.html         Our Story page
-├── shop.html           Shop page (placeholder product grid)
-├── contact.html         Contact page (Netlify Forms wired up, no backend needed)
+├── index.html         Home — hero only, no products
+├── collections.html    Index of named collections ("ways in," not categories)
+├── flagship.html        ← worked example of a single collection page (template)
+├── language.html        Index of the phrase dictionary
+├── look-again.html       ← worked example of a single phrase page (template)
+├── journal.html        Journal index (placeholder entries, no post pages yet)
+├── about.html           Brand story + sourcing/process
+├── shop.html             Product grid
+├── contact.html           Netlify Forms-ready contact form
 ├── css/
-│   └── styles.css     All styling — design tokens (colours/fonts) live at the top
+│   └── styles.css       All styling — design tokens at the top
 ├── js/
-│   └── main.js          Mobile nav toggle
-├── images/             Drop real product/brand photography in here
+│   └── main.js            Mobile nav toggle + the "signal" reveal effect
+├── images/
 ├── netlify.toml
 └── .gitignore
 ```
 
-## Previewing locally in VS Code
+## The design system, in short
 
-The easiest option is the **Live Server** extension:
-1. Install the "Live Server" extension from the VS Code marketplace.
-2. Right-click `index.html` → "Open with Live Server".
+Two neutrals that invert for dark sections (**bone** background / **ink**
+text, or the reverse), plus one deliberate accent color called **the
+signal** — used only at moments of recognition: a word shifting colour as
+you scroll past it, a phrase's headline on its own page, an active link.
+Everything else stays quiet on purpose. All of this lives at the top of
+`css/styles.css` — that's the one file to touch for any palette or type
+change.
 
-That's it — no terminal commands needed for local preview.
+Type: **Fraunces** (display/headlines), **Public Sans** (body),
+**IBM Plex Mono** (small architectural details — dates, specs, metadata).
 
-## Pushing to GitHub (PowerShell)
+The "signal reveal" effect (`js/main.js`) uses an IntersectionObserver to
+shift specific words/elements from ink to the signal colour once they
+scroll into view — a literal nod to "look again." It's currently used in
+three places: the word "seeing" in the homepage hero, collection names on
+the Collections page, and phrase names on The Language index. Add the
+`reveal-signal` class to any element to extend it elsewhere; it degrades
+gracefully (no animation, just the end state) for anyone with reduced
+motion enabled.
 
-From inside the `truthware-site` folder in your terminal:
+## Templates to duplicate
 
-```powershell
-git init
-git add .
-git commit -m "Initial commit: site scaffold"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
-```
+Two page types are built as **one worked example each**, meant to be
+copied for every real entry:
 
-Replace the `git remote add origin ...` line with the URL of a repo you've
-created on GitHub first (GitHub.com → New repository → don't initialise
-with a README, since this folder already has one).
+- **A collection page** — `flagship.html`. Duplicate it for each of the
+  other five collections named on `collections.html` (Phrase Phases,
+  Over / Under, Verb Traps, High Bandwidth, Kids), then link the new file
+  from that row on `collections.html`.
+- **A phrase / dictionary page** — `look-again.html`. Duplicate it for
+  every real phrase, following the same five sections Kathryn's notes
+  call for: the phrase, its collection(s), its insert card, notes, and
+  related phrases. Link each one from `language.html`.
 
-## Deploying on Netlify
+## A naming note
 
-1. Log in to [netlify.com](https://www.netlify.com) and choose **"Add new site" → "Import an existing project"**.
-2. Connect your GitHub account and pick the Truthware repo.
-3. Build settings: leave the build command blank, and set the publish
-   directory to `.` (this is already set in `netlify.toml`, so Netlify
-   should pick it up automatically).
-4. Deploy. Netlify will give you a live URL immediately, and every future
-   `git push` to `main` will auto-redeploy the site.
+Kathryn's brief consistently writes the name as **TruthWare** (capital W),
+so that's what's used across the logo, nav, and copy. The domain
+(`truthware.me`) and file names stay lowercase since domains/files aren't
+case-sensitive in practice — just flagging the visible styling choice in
+case it wasn't deliberate.
 
-Once it's deployed at least once, go to the site's **Forms** tab in the
-Netlify dashboard — the contact form on `contact.html` will already be
-detected and start collecting submissions, no extra setup required.
+## Local preview, GitHub, and Netlify
 
-## When design feedback comes in
+Same as before — nothing about the deployment process changes:
 
-Everything that needs to change lives in one place: the `:root` block at
-the very top of `css/styles.css`. Update the hex values and font names
-there and the whole site updates with them. Page structure, navigation,
-and components (buttons, tags, product cards, etc.) shouldn't need to
-change — just the look.
+- **Local preview:** VS Code's Live Server extension, or `npx serve` from
+  the project folder.
+- **GitHub / Netlify:** the site is already live and connected — pushing
+  to `main` auto-deploys. No new setup needed for this update.
 
 ## Next steps
 
-- [ ] Swap placeholder colours/fonts in `css/styles.css` once team feedback lands
-- [ ] Replace placeholder copy throughout with final wording
-- [ ] Add real product photography to `images/` and swap into `shop.html` / `index.html`
-- [ ] Decide on real shop/checkout functionality (e.g. Shopify Buy Buttons, Snipcart) once you know order volume and needs
-- [ ] Point a custom domain at the Netlify site once one is registered
+- [ ] Write the real phrases and replace the placeholder examples throughout (Look Again., Same Picture Different Eyes, etc. are all invented placeholders)
+- [ ] Duplicate `flagship.html` and `look-again.html` for the rest of the collections and phrases
+- [ ] Add real photography per the brief's direction (real people, natural light, architectural — no staged lifestyle shots) to replace the flat placeholder panels
+- [ ] Decide whether Journal entries get individual pages, and build that template once there's real content
+- [ ] Confirm the TruthWare capitalization is intentional

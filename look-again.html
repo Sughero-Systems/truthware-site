@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — TruthWare</title>
-  <meta name="description" content="Get in touch with TruthWare." />
+  <title>"Look Again." — The Language — TruthWare</title>
+  <meta name="description" content="The first TruthWare phrase." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
@@ -25,41 +25,40 @@
     </nav>
   </header>
 
+  <!--
+    THIS IS THE DICTIONARY-ENTRY TEMPLATE — copy this whole page for every
+    new phrase, following the same five parts Kathryn's brief lays out:
+    the phrase, its collection(s), its insert card, notes, and related
+    phrases. Link it from language.html once it's real.
+  -->
   <section class="page-head">
     <div class="container">
-      <span class="eyebrow">Contact</span>
-      <h1>Get in Touch</h1>
-      <p>For press, stockists, or anything that doesn't fit anywhere else on this site.</p>
+      <a href="language.html" class="meta">&larr; The Language</a>
+      <p class="phrase-display">Look Again.</p>
+      <span class="meta">Flagship</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>The Insert Card</h2>
+      <div class="insert-card">
+        Every Look Again. piece ships with a small card explaining why the phrase exists — not as marketing copy, but as orientation. [Insert card text goes here once written.]
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Notes</h2>
+      <p>This was the first phrase. Everything else followed from it.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <!--
-        Wired for Netlify Forms — no backend needed. Once this site is
-        deployed on Netlify, submissions show up in the Forms tab of the
-        Netlify dashboard automatically.
-      -->
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-        </p>
-
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+      <h2>Related Phrases</h2>
+      <p class="related-phrases">Same Picture, Different Eyes &middot; Not Lost. Just Early.</p>
     </div>
   </section>
 

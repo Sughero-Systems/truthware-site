@@ -1,40 +1,35 @@
 /* ==========================================================================
    TRUTHWARE — Core Stylesheet
-   --------------------------------------------------------------------------
-   The colours and fonts in the :root block below are PLACEHOLDERS.
-   Once Catherine's team sends through their colour/style picks, this is
-   the only place that needs to change for the whole site to update.
+   Version 2 — rebuilt around Kathryn's "recognition apparel" direction.
+   Quiet, architectural, restrained. Two neutrals (bone / ink) that invert
+   for dark sections, plus one deliberate accent — "the signal" — used only
+   at moments of recognition. Change those five tokens below and the whole
+   site follows.
    ========================================================================== */
 
 :root {
-  /* ---- Palette ----
-     Leaning autumnal / burnt-orange per early feedback. Still a first
-     pass, not the final word — update once the rest of the team's
-     site examples and colour picks land. */
-  --color-bg:        #F1E4D0; /* warm parchment background */
-  --color-bg-dark:   #2E1F17; /* deep espresso brown — hero / footer */
-  --color-text:      #2A211B; /* warm near-black ink */
-  --color-text-soft: #6B5B4D; /* muted warm-brown body text */
-  --color-text-light:#F1E4D0; /* text sitting on dark background */
-  --color-accent:    #BF5B2E; /* burnt orange — buttons, links, highlights */
-  --color-accent-2:  #C98A2B; /* amber gold — secondary accent */
-  --color-border:    #D9C4A8; /* warm tan borders, tag outlines */
+  /* ---- Palette ---- */
+  --color-bone:      #F6F4F0; /* gallery wall — primary background */
+  --color-ink:        #1B1A17; /* primary text, and the background for inverted/dark sections */
+  --color-ink-soft:   #6E6B63; /* quieter secondary text */
+  --color-signal:     #C1531F; /* the one accent — recognition moments only */
+  --color-line:       #DAD7D0; /* hairline rules */
 
   /* ---- Type ---- */
-  --font-display: "Big Shoulders", sans-serif;
+  --font-display: "Fraunces", serif;
   --font-body:    "Public Sans", sans-serif;
   --font-mono:    "IBM Plex Mono", monospace;
 
-  /* ---- Spacing scale ---- */
+  /* ---- Spacing scale (generous — whitespace is doing a lot of work here) ---- */
   --space-1: 0.5rem;
   --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2.5rem;
-  --space-5: 4rem;
-  --space-6: 6rem;
+  --space-3: 1.75rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+  --space-6: 8rem;
 
-  --max-width: 1100px;
-  --radius: 2px;
+  --max-width: 1140px;
+  --radius: 0px; /* sharp edges — architectural, not soft */
 }
 
 /* ---- Reset ---- */
@@ -42,104 +37,103 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  color: var(--color-text);
-  background: var(--color-bg);
-  line-height: 1.55;
+  color: var(--color-ink);
+  background: var(--color-bone);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
-button { font-family: inherit; cursor: pointer; }
+button { font-family: inherit; cursor: pointer; background: none; border: none; }
 
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* Visible keyboard focus everywhere */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-signal);
   outline-offset: 3px;
 }
 
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--space-3);
-}
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-3); }
 
 .eyebrow {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-ink-soft);
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  font-weight: 500;
+  line-height: 1.1;
 }
-h1 { font-size: clamp(2.75rem, 7vw, 5.5rem); text-transform: uppercase; }
-h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); text-transform: uppercase; }
-h3 { font-size: 1.25rem; }
-p  { color: var(--color-text-soft); }
+h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 600; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p  { color: var(--color-ink-soft); max-width: 60ch; }
 
-/* ---- Buttons ---- */
+/* ---- The signal: the one place colour is allowed to mean something ---- */
+.reveal-signal { color: var(--color-ink); transition: color 0.7s ease; }
+.reveal-signal.is-signal { color: var(--color-signal); }
+.hero .reveal-signal { color: var(--color-bone); }
+.hero .reveal-signal.is-signal { color: var(--color-signal); }
+.always-signal { color: var(--color-signal); }
+
+/* ---- Text-led CTAs (no buttons pretending to be a marketplace) ---- */
+.cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.15em;
+}
+.cta-primary { color: var(--color-signal); }
+.cta-secondary { color: var(--color-ink-soft); }
+.cta:hover { opacity: 0.7; }
+
+/* A real button, reserved for actual form submission */
 .btn {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.85rem 1.6rem;
-  border: 1px solid currentColor;
-  border-radius: var(--radius);
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.btn-solid {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-text-light);
-}
-.btn-solid:hover { background: #9c4720; }
-.btn-outline {
-  color: var(--color-text-light);
-  border-color: var(--color-text-light);
-}
-.btn-outline:hover {
-  background: var(--color-text-light);
-  color: var(--color-bg-dark);
-}
-
-/* ---- Tag chip (the recurring "care label" motif) ---- */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0.35rem 0.6rem;
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius);
-  color: var(--color-text-soft);
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bone);
+  transition: opacity 0.15s ease;
 }
-.tag-row { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-.tag-on-dark { border-color: rgba(244,241,234,0.35); color: var(--color-text-light); }
+.btn:hover { opacity: 0.85; }
 
-/* ---- Header / Nav ---- */
+/* ---- Quiet metadata text (replaces the old boxed "tag" chip) ---- */
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.meta-light { color: rgba(246,244,240,0.6); }
+.meta-sep { margin: 0 0.5em; }
+
+/* ---- Header / Nav (always ink — the one constant across every page) ---- */
 .site-header {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
+  background: var(--color-ink);
+  color: var(--color-bone);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -154,32 +148,29 @@ p  { color: var(--color-text-soft); }
 }
 .logo {
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
 }
 .nav-links {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.nav-links a { opacity: 0.85; }
-.nav-links a:hover { opacity: 1; }
+.nav-links a { opacity: 0.78; transition: color 0.15s ease, opacity 0.15s ease; }
+.nav-links a:hover { opacity: 1; color: var(--color-signal); }
 .nav-toggle {
   display: none;
-  background: none;
-  border: none;
-  color: var(--color-text-light);
+  color: var(--color-bone);
   font-family: var(--font-mono);
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .nav-toggle { display: block; }
   .nav-links {
     position: absolute;
@@ -187,69 +178,87 @@ p  { color: var(--color-text-soft); }
     left: 0;
     right: 0;
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-2);
-    background: var(--color-bg-dark);
+    background: var(--color-ink);
     padding: var(--space-3);
     display: none;
   }
   .nav-links.is-open { display: flex; }
 }
 
-/* ---- Hero ---- */
+/* ---- Hero — reserved for the homepage only; everywhere else stays quiet ---- */
 .hero {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
+  background: var(--color-ink);
+  color: var(--color-bone);
   padding: var(--space-6) var(--space-3) var(--space-5);
 }
-.hero-inner { max-width: var(--max-width); margin: 0 auto; }
-.hero h1 { margin-top: var(--space-2); }
+.hero-inner { max-width: 760px; margin: 0 auto; }
+.hero .eyebrow { color: rgba(246,244,240,0.55); margin-bottom: var(--space-2); }
+.hero h1 { margin-top: var(--space-1); }
 .hero-sub {
-  max-width: 36ch;
-  color: var(--color-text-light);
-  opacity: 0.85;
-  margin: var(--space-3) 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  color: rgba(246,244,240,0.85);
+  max-width: 42ch;
+  margin: var(--space-3) 0;
 }
-.hero .tag-row { margin-bottom: var(--space-4); }
+.hero-statement {
+  max-width: 46ch;
+  color: rgba(246,244,240,0.65);
+  margin: var(--space-3) 0 var(--space-4);
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hero .cta-primary { color: var(--color-signal); }
+.hero .cta-secondary { color: rgba(246,244,240,0.65); }
+
+/* ---- Quiet page heading — every page except the homepage ---- */
+.page-head {
+  padding: var(--space-5) 0 var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+}
+.page-head .eyebrow { margin-bottom: var(--space-1); }
+.page-head p { margin-top: var(--space-2); }
 
 /* ---- Generic section ---- */
 .section { padding: var(--space-5) 0; }
-.section-head { margin-bottom: var(--space-4); max-width: 50ch; }
-.section-head h2 { margin-top: var(--space-1); }
+.section + .section { border-top: 1px solid var(--color-line); }
+.section-head { margin-bottom: var(--space-4); max-width: 56ch; }
+.section-head .eyebrow { margin-bottom: var(--space-1); }
 
-/* ---- Value grid (Locally Grown / Hand Finished / Built to Last) ---- */
-.value-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* ---- Hairline-divided row lists (collections, journal, values) ---- */
+.row-list > * + * { border-top: 1px solid var(--color-line); }
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   gap: var(--space-3);
+  padding: var(--space-3) 0;
 }
-.value-card {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--space-3);
-}
-.value-card h3 { margin-bottom: var(--space-1); }
+.row-link { transition: opacity 0.15s ease; }
+.row-link:hover { opacity: 0.6; }
+.row-name { font-family: var(--font-display); font-size: 1.3rem; }
+.row-desc { color: var(--color-ink-soft); max-width: 38ch; text-align: right; }
 @media (max-width: 700px) {
-  .value-grid { grid-template-columns: 1fr; }
+  .row { flex-direction: column; gap: var(--space-1); align-items: flex-start; }
+  .row-desc { text-align: left; }
 }
 
-/* ---- Process steps (a real sequence — Grown to Sewn) ---- */
+/* ---- Process steps (a genuine sequence — fibre to garment) ---- */
 .process-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-2);
+  gap: var(--space-3);
   counter-reset: step;
 }
-.process-step {
-  border-top: 2px solid var(--color-accent);
-  padding-top: var(--space-1);
-}
+.process-step { border-top: 1px solid var(--color-line); padding-top: var(--space-1); }
 .process-step::before {
   counter-increment: step;
   content: counter(step, decimal-leading-zero);
   display: block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-accent);
+  color: var(--color-ink-soft);
   margin-bottom: 0.3rem;
 }
 @media (max-width: 700px) {
@@ -260,41 +269,42 @@ p  { color: var(--color-text-soft); }
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+  gap: var(--space-3) var(--space-3);
 }
 .product-card { display: flex; flex-direction: column; gap: var(--space-1); }
 .product-photo {
   aspect-ratio: 4 / 5;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--color-border),
-    var(--color-border) 10px,
-    transparent 10px,
-    transparent 20px
-  );
-  background-color: #e6cfac;
-  border-radius: var(--radius);
+  background: #ECE9E2;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-soft);
 }
-.product-name { font-weight: 600; }
-.product-price { font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-soft); }
-@media (max-width: 900px) {
-  .product-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 550px) {
-  .product-grid { grid-template-columns: 1fr; }
-}
+.product-photo span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-soft); }
+.product-name { font-family: var(--font-display); font-size: 1.05rem; }
+@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 550px) { .product-grid { grid-template-columns: 1fr; } }
 
-/* ---- Story / about copy ---- */
-.prose { max-width: 65ch; }
+/* ---- Prose ---- */
+.prose { max-width: 62ch; }
 .prose p + p { margin-top: var(--space-2); }
+.prose-lede { font-family: var(--font-display); font-size: 1.3rem; color: var(--color-ink); }
+
+/* ---- Phrase page (the dictionary entry template) ---- */
+.phrase-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  color: var(--color-signal);
+  margin: var(--space-2) 0 var(--space-3);
+}
+.insert-card {
+  border-top: 1px solid var(--color-ink);
+  border-bottom: 1px solid var(--color-ink);
+  padding: var(--space-3) 0;
+  font-family: var(--font-mono);
+  font-style: italic;
+  color: var(--color-ink-soft);
+}
+.related-phrases { font-family: var(--font-mono); color: var(--color-ink-soft); }
 
 /* ---- Form ---- */
 .form-field { margin-bottom: var(--space-2); max-width: 480px; }
@@ -312,16 +322,15 @@ p  { color: var(--color-text-soft); }
   font-family: var(--font-body);
   font-size: 1rem;
   padding: 0.7rem 0.8rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border: 1px solid var(--color-line);
   background: #fff;
-  color: var(--color-text);
+  color: var(--color-ink);
 }
 
-/* ---- Footer ---- */
+/* ---- Footer (ink — bookends the header at the bottom of every page) ---- */
 .site-footer {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
+  background: var(--color-ink);
+  color: var(--color-bone);
   padding: var(--space-4) 0;
   margin-top: var(--space-5);
 }
@@ -335,9 +344,10 @@ p  { color: var(--color-text-soft); }
   align-items: center;
   gap: var(--space-2);
 }
+.footer-inner .nav-links a:hover { color: var(--color-signal); opacity: 1; }
 .footer-note {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
-  opacity: 0.6;
+  opacity: 0.55;
 }
