@@ -28,6 +28,7 @@
     </nav>
   </header>
 
+  <!-- Hero: Kathryn's exact words, verbatim -->
   <section class="hero">
     <div class="hero-inner">
       <span class="eyebrow">TruthWare</span>
@@ -41,9 +42,36 @@
     </div>
   </section>
 
+  <!-- Scroll story: three lines that build as you scroll down -->
+  <section class="scroll-story">
+    <div class="container">
+      <p class="story-line">The phrase is the product.</p>
+      <p class="story-line">The garment is the delivery.</p>
+      <p class="story-line">You are <em>the message.</em></p>
+    </div>
+  </section>
+
+  <!-- Quiet closing thought -->
   <section class="section">
     <div class="container">
       <p class="prose-lede" style="max-width: 36ch;">TruthWare isn't becoming a clothing website. It's becoming a language. The clothing is simply the first interface.</p>
+    </div>
+  </section>
+
+  <!-- Email signup -->
+  <section class="section email-signup">
+    <div class="container">
+      <span class="eyebrow">Stay in the language</span>
+      <h2>A quiet note, sent quarterly.</h2>
+      <p>10% off your first order when you sign up. No noise. Just signal.</p>
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field-nl">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p hidden><label>Don't fill this out: <input name="bot-field-nl" /></label></p>
+        <div class="signup-row">
+          <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+          <button type="submit" class="btn">Sign Up</button>
+        </div>
+      </form>
     </div>
   </section>
 

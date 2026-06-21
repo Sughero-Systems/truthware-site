@@ -1,14 +1,13 @@
 // TruthWare — site JS
 // 1. Mobile nav toggle
-// 2. The "signal" reveal: elements with .reveal-signal quietly shift from
-//    ink to the signal colour once they're actually in view — a small,
-//    literal nod to "look again." Respects prefers-reduced-motion via the
-//    global CSS rule that zeroes transition durations.
+// 2. Signal reveal: .reveal-signal elements shift to accent colour on scroll
+// 3. Scroll story: .story-line elements fade + rise into view with stagger
 
 document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.querySelector(".nav-toggle");
-  const links = document.querySelector(".nav-links");
 
+  // ---- 1. Mobile nav ----
+  const toggle = document.querySelector(".nav-toggle");
+  const links  = document.querySelector(".nav-links");
   if (toggle && links) {
     toggle.addEventListener("click", () => {
       const isOpen = links.classList.toggle("is-open");
@@ -16,9 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ---- 2. Signal reveal (.reveal-signal) ----
   const signalTargets = document.querySelectorAll(".reveal-signal");
   if (signalTargets.length) {
-    const observer = new IntersectionObserver(
+    const signalObs = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -29,6 +29,31 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       { threshold: 0.6 }
     );
-    signalTargets.forEach((el) => observer.observe(el));
+    signalTargets.forEach((el) => signalObs.observe(el));
   }
+
+  // ---- 3. Scroll story (.story-line) ----
+  // Each line triggers independently as it enters the viewport, with a
+  // small index-based delay so sibling lines stagger rather than all
+  // firing at once if they happen to enter the viewport together.
+  const storyLines = document.querySelectorAll(".story-line");
+  if (storyLines.length) {
+    const storyObs = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const siblings = [...entry.target.parentElement.children];
+            const index = siblings.indexOf(entry.target);
+            setTimeout(() => {
+              entry.target.classList.add("is-visible");
+            }, index * 160);
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    storyLines.forEach((el) => storyObs.observe(el));
+  }
+
 });

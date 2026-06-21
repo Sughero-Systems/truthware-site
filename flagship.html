@@ -63,6 +63,24 @@
     </div>
   </section>
 
+
+  <!-- Email signup -->
+  <section class="section email-signup">
+    <div class="container">
+      <span class="eyebrow">Stay in the language</span>
+      <h2>A quiet note, sent quarterly.</h2>
+      <p>10% off your first order when you sign up. No noise. Just signal.</p>
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field-nl">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p hidden><label>Don't fill this out: <input name="bot-field-nl" /></label></p>
+        <div class="signup-row">
+          <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+          <button type="submit" class="btn">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <span class="logo">TruthWare</span>

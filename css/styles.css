@@ -351,3 +351,76 @@ p  { color: var(--color-ink-soft); max-width: 60ch; }
   letter-spacing: 0.05em;
   opacity: 0.55;
 }
+
+
+/* ==========================================================================
+   SCROLL STORY
+   Three lines that build as the user scrolls down the homepage.
+   Each line starts invisible and translates up into place.
+   Reduced-motion users get them fully visible with no animation.
+   ========================================================================== */
+
+.scroll-story {
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.story-line {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-ink);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  padding-bottom: var(--space-3);
+}
+.story-line:last-child { padding-bottom: 0; }
+.story-line.is-visible { opacity: 1; transform: translateY(0); }
+.story-line em { font-style: italic; color: var(--color-signal); }
+
+@media (prefers-reduced-motion: reduce) {
+  .story-line { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   EMAIL SIGNUP
+   Sits above the footer on every page. Quiet and honest — one field,
+   one promise, no noise.
+   ========================================================================== */
+
+.email-signup {
+  border-top: 1px solid var(--color-line);
+  border-bottom: none; /* footer provides the bottom boundary */
+}
+.email-signup h2 {
+  margin: var(--space-1) 0 var(--space-1);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+.email-signup p { margin-bottom: var(--space-3); }
+.signup-row {
+  display: flex;
+  gap: var(--space-1);
+  max-width: 480px;
+}
+.signup-row input[type="email"] {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  color: var(--color-ink);
+  min-width: 0; /* prevents flex overflow */
+}
+.signup-row input[type="email"]:focus {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+.signup-row .btn { white-space: nowrap; }
+
+@media (max-width: 500px) {
+  .signup-row { flex-direction: column; }
+  .signup-row .btn { width: 100%; text-align: center; }
+}
